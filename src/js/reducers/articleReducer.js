@@ -2,10 +2,10 @@ import { ADD_ARTICLE } from '../constants/action-types';
 
 const initialState = [];
 
-const articleReducer = (state = initialState, action) => {
+const articleReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_ARTICLE:
-      return { ...state, articles: [...state.articles, action.payload] };
+      return [...state, action.payload];
     default:
       return state;
   }
