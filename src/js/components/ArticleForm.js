@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuidv1 from 'uuid';
 import { addArticle } from '../actions';
+import { PropTypes } from 'prop-types';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -10,12 +11,9 @@ const mapDispatchToProps = dispatch => {
 };
 
 class ConnectedForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      title: '',
-    };
-  }
+  state = {
+    title: '',
+  };
 
   handleChange = event =>
     this.setState({ [event.target.id]: event.target.value });
@@ -56,5 +54,9 @@ const ArticleForm = connect(
   null,
   mapDispatchToProps,
 )(ConnectedForm);
+
+ConnectedForm.propTypes = {
+  addArticle: PropTypes.func.isRequired,
+};
 
 export default ArticleForm;
